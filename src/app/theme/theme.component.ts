@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
 @Component({
   selector: 'app-theme',
   standalone: true,
-  imports: [],
+  imports: [HlmButtonDirective],
   templateUrl: './theme.component.html',
 })
 export class ThemeComponent {
