@@ -6,9 +6,20 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script defer>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
   <body
-    class="h-screen w-screen bg-gradient-to-b from-slate-100 to-slate-400 dark:bg-black"
+    class="h-screen w-screen bg-gradient-to-b from-slate-100 to-slate-400 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-600"
   >
     <app-root></app-root>
   </body>
