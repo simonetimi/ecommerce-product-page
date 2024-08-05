@@ -6,6 +6,8 @@ interface CartProduct {
   name: string;
   price: number;
   quantity: number;
+  discount: number;
+  thumbnail: string;
 }
 
 @Injectable({
@@ -34,6 +36,8 @@ export class ProductsService {
       id: product.id,
       name: product.name,
       price: product.price,
+      thumbnail: product.thumbnail,
+      discount: product.discount,
       quantity,
     };
     this.itemsInCart.update((prevState) => [...prevState, newItem]);

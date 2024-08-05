@@ -38,8 +38,39 @@
       <div class="border-b border-gray-200 pb-5">
         <h1 class="text-sm font-bold">Cart</h1>
       </div>
-      <div class="flex min-h-36 items-center justify-center text-gray-400">
-        Your cart is empty.
+      <div
+        class="my-2 flex min-h-36 flex-col items-center gap-2 overflow-auto text-gray-400"
+      >
+        @if (itemsInCart().length >= 1) {
+          @for (item of itemsInCart(); track item.id) {
+            <div class="flex items-center gap-2 text-xs">
+              <img
+                class="h-12 w-12 rounded-lg"
+                [src]="item.thumbnail"
+                alt="product thumbnail"
+              />
+              <div class="flex w-52 flex-col gap-2 text-foreground/60">
+                <p>
+                  {{
+                    item.name.length < 30
+                      ? item.name
+                      : item.name.substring(0, 27) + "..."
+                  }}
+                </p>
+                <p>
+                  {{ item.price * item.discount | currency }} x
+                  {{ item.quantity }}
+                  <span class="font-bold text-foreground">{{
+                    item.price * item.discount * item.quantity | currency
+                  }}</span>
+                </p>
+              </div>
+              <hlm-icon size="sm" name="lucideTrash2" />
+            </div>
+          }
+        } @else {
+          Your cart is empty.
+        }
       </div>
     </div>
   </brn-popover>

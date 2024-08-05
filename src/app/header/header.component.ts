@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import {
   BrnSheetContentDirective,
@@ -26,7 +26,9 @@ import {
 } from '@spartan-ng/ui-popover-helm';
 
 import { provideIcons } from '@ng-icons/core';
-import { lucideShoppingCart, lucideMenu } from '@ng-icons/lucide';
+import { lucideShoppingCart, lucideMenu, lucideTrash2 } from '@ng-icons/lucide';
+import { ProductsService } from '../products.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -46,12 +48,16 @@ import { lucideShoppingCart, lucideMenu } from '@ng-icons/lucide';
     BrnSheetTriggerDirective,
     HlmSheetComponent,
     HlmSheetContentComponent,
+    CommonModule,
   ],
-  providers: [provideIcons({ lucideShoppingCart, lucideMenu })],
+  providers: [provideIcons({ lucideShoppingCart, lucideMenu, lucideTrash2 })],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
+  productsService = inject(ProductsService);
+  itemsInCart = this.productsService.itemsInCart;
+
   menuItems = [
     { id: 0, title: 'Collections' },
     { id: 1, title: 'Men' },
