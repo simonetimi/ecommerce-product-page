@@ -35,6 +35,12 @@
       ],
       "@spartan-ng/ui-sheet-helm": [
         "./src/ui/ui-sheet-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-badge-helm": [
+        "./src/ui/ui-badge-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-button-helm": [
+        "./src/ui/ui-button-helm/src/index.ts"
       ]
     }
   },

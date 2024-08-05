@@ -8,17 +8,12 @@ import {
   HlmSheetComponent,
   HlmSheetContentComponent,
 } from '@spartan-ng/ui-sheet-helm';
-
 import {
   HlmAvatarImageDirective,
   HlmAvatarComponent,
   HlmAvatarFallbackDirective,
 } from '@spartan-ng/ui-avatar-helm';
-
 import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
-import { provideIcons } from '@ng-icons/core';
-import { lucideShoppingCart, lucideMenu } from '@ng-icons/lucide';
-
 import {
   BrnPopoverCloseDirective,
   BrnPopoverComponent,
@@ -29,6 +24,9 @@ import {
   HlmPopoverCloseDirective,
   HlmPopoverContentDirective,
 } from '@spartan-ng/ui-popover-helm';
+
+import { provideIcons } from '@ng-icons/core';
+import { lucideShoppingCart, lucideMenu } from '@ng-icons/lucide';
 
 @Component({
   standalone: true,
@@ -59,5 +57,6 @@ export class HeaderComponent {
     { id: 1, title: 'Men' },
     { id: 2, title: 'Women' },
     { id: 3, title: 'About' },
+    { id: 4, title: 'Contact' },
   ];
 }

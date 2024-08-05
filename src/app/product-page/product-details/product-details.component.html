@@ -1,1 +1,37 @@
-<p>product-details works!</p>
+<article class="flex w-full flex-col gap-2 lg:w-3/4">
+  <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500">
+    Sneaker company
+  </h3>
+  <h1 class="text-4xl font-bold">Fall Limited Edition Sneakers</h1>
+  <p class="mt-6 text-slate-500">
+    These low-profile sneakers are your perfect casual wear companion. Featuring
+    a durable rubber outer sole, they'll withstand everything the weather can
+    offer.
+  </p>
+  <div class="mt-4 flex items-center gap-4">
+    <h2 class="text-3xl font-bold">{{ 125 | currency }}</h2>
+    <div hlmBadge class="h-2/3 rounded-sm bg-black">50%</div>
+  </div>
+  <section class="mt-4 flex h-12 items-center gap-2">
+    <div
+      class="flex h-full w-36 items-center justify-evenly rounded-lg bg-slate-300/50"
+    >
+      <button
+        (click)="onChangeNumber('sub')"
+        class="h-full flex-1 text-2xl font-bold text-primary"
+      >
+        -
+      </button>
+      <div class="w-4 text-center text-lg">{{ items() }}</div>
+      <button
+        (click)="onChangeNumber('add')"
+        class="h-full flex-1 text-2xl font-bold text-primary"
+      >
+        +
+      </button>
+    </div>
+    <button hlmBtn class="flex h-full w-56 gap-4">
+      <hlm-icon size="sm" name="lucideShoppingCart" /> Add to cart
+    </button>
+  </section>
+</article>
