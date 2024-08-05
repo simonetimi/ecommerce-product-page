@@ -11,6 +11,8 @@ import { ProductsService } from '../products.service';
 })
 export class ProductPageComponent {
   productsService = inject(ProductsService);
+
+  // 1 is a placeholder for the id
   productId = signal('1');
   product = this.productsService.getProduct(this.productId());
 }

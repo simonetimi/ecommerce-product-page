@@ -25,7 +25,7 @@
       >
         -
       </button>
-      <div class="w-4 text-center text-lg">{{ items() }}</div>
+      <div class="w-4 text-center text-lg">{{ quantity() }}</div>
       <button
         (click)="onChangeNumber('add')"
         class="h-full flex-1 text-2xl font-bold text-primary"
@@ -33,7 +33,7 @@
         +
       </button>
     </div>
-    <button hlmBtn class="flex h-full w-56 gap-4">
+    <button (click)="onAddToCart()" hlmBtn class="flex h-full w-56 gap-4">
       <hlm-icon size="sm" name="lucideShoppingCart" /> Add to cart
     </button>
   </section>
