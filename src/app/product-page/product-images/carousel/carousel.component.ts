@@ -39,7 +39,7 @@ export class CarouselComponent {
   // this listens for width changes (client window). If small, the carousel won't open a dialog (useless on mobile)
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    if (window.innerWidth < 700) {
+    if (window.innerWidth < 1100) {
       this.isMobile.set(true);
     } else {
       this.isMobile.set(false);
