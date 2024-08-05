@@ -1,12 +1,32 @@
 <img src="logo.svg" alt="Sneakers Logo" />
-<nav class="ml-10">
-  <ul class="flex gap-14 text-sm text-muted-foreground">
+<nav class="ml-10 self-center">
+  <ul class="flex h-full gap-14 text-sm text-muted-foreground">
     @for (item of menuItems; track item.id) {
       <li
-        class="decoration-primary decoration-4 hover:cursor-pointer hover:underline hover:underline-offset-[9vh]"
+        class="self-center decoration-primary decoration-4 hover:cursor-pointer hover:underline hover:underline-offset-[9vh]"
       >
         {{ item.title }}
       </li>
     }
   </ul>
 </nav>
+<div class="ml-auto flex items-center justify-center gap-8 p-2">
+  <brn-popover>
+    <button brnPopoverTrigger><hlm-icon name="lucideShoppingCart" /></button>
+    <div hlmPopoverContent *brnPopoverContent="let ctx">
+      <div class="border-b border-gray-200 pb-5">
+        <h1 class="text-sm font-bold">Card</h1>
+      </div>
+      <div class="flex min-h-36 items-center justify-center text-gray-400">
+        Your cart is empty.
+      </div>
+    </div>
+  </brn-popover>
+
+  <hlm-avatar
+    class="hover:cursor-pointer hover:outline hover:outline-2 hover:outline-primary"
+  >
+    <img src="image-avatar.png" alt="User Picture" hlmAvatarImage />
+    <span class="bg-destructive text-white" hlmAvatarFallback>UR</span>
+  </hlm-avatar>
+</div>
