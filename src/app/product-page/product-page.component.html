@@ -2,5 +2,9 @@
   class="flex min-h-[80vh] w-[100vw] flex-col items-center justify-center gap-10 p-10 lg:flex-row"
 >
   <app-product-images />
-  <app-product-details />
+  @if (product) {
+    <app-product-details [currentProduct]="product" />
+  } @else {
+    <p>Product not found!</p>
+  }
 </main>

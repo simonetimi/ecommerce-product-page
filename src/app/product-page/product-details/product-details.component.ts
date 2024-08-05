@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 import { HlmBadgeDirective } from '@spartan-ng/ui-badge-helm';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
@@ -7,6 +7,8 @@ import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 
 import { provideIcons } from '@ng-icons/core';
 import { lucideShoppingCart } from '@ng-icons/lucide';
+import { ProductsService } from '../../products.service';
+import { Product } from '../../placeholder-data';
 
 @Component({
   selector: 'app-product-details',
@@ -22,6 +24,9 @@ import { lucideShoppingCart } from '@ng-icons/lucide';
   styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent {
+  // 1 is a placeholder for the id
+  currentProduct = input.required<Product>();
+
   items = signal(1);
   onChangeNumber(modifier: string) {
     if (modifier === 'add') {

@@ -1,17 +1,20 @@
 <article class="flex w-full flex-col gap-2 lg:w-3/4">
   <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500">
-    Sneaker company
+    {{ currentProduct().company }}
   </h3>
-  <h1 class="text-4xl font-bold">Fall Limited Edition Sneakers</h1>
+  <h1 class="text-4xl font-bold">{{ currentProduct().name }}</h1>
   <p class="mt-6 text-slate-500">
-    These low-profile sneakers are your perfect casual wear companion. Featuring
-    a durable rubber outer sole, they'll withstand everything the weather can
-    offer.
+    {{ currentProduct().description }}
   </p>
   <div class="mt-4 flex items-center gap-4">
-    <h2 class="text-3xl font-bold">{{ 125 | currency }}</h2>
-    <div hlmBadge class="h-2/3 rounded-sm bg-black">50%</div>
+    <h2 class="text-3xl font-bold">{{ currentProduct().price | currency }}</h2>
+    <div hlmBadge class="h-2/3 rounded-sm bg-black">
+      {{ currentProduct().discount * 100 }}%
+    </div>
   </div>
+  <p class="text-foreground/60 line-through">
+    {{ currentProduct().price * currentProduct().discount | currency }}
+  </p>
   <section class="mt-4 flex h-12 items-center gap-2">
     <div
       class="flex h-full w-36 items-center justify-evenly rounded-lg bg-slate-300/50"
