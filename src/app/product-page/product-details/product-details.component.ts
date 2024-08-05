@@ -43,5 +43,6 @@ export class ProductDetailsComponent {
       this.currentProduct(),
       this.quantity(),
     );
+    this.quantity.set(1);
   }
 }
