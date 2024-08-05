@@ -29,6 +29,7 @@ import { provideIcons } from '@ng-icons/core';
 import { lucideShoppingCart, lucideMenu, lucideTrash2 } from '@ng-icons/lucide';
 import { ProductsService } from '../products.service';
 import { CommonModule } from '@angular/common';
+import { LogoComponent } from '../../ui/logo/logo.component';
 
 @Component({
   standalone: true,
@@ -49,6 +50,7 @@ import { CommonModule } from '@angular/common';
     HlmSheetComponent,
     HlmSheetContentComponent,
     CommonModule,
+    LogoComponent,
   ],
   providers: [provideIcons({ lucideShoppingCart, lucideMenu, lucideTrash2 })],
   templateUrl: './header.component.html',
