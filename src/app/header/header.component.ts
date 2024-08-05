@@ -1,6 +1,15 @@
 import { Component } from '@angular/core';
 
 import {
+  BrnSheetContentDirective,
+  BrnSheetTriggerDirective,
+} from '@spartan-ng/ui-sheet-brain';
+import {
+  HlmSheetComponent,
+  HlmSheetContentComponent,
+} from '@spartan-ng/ui-sheet-helm';
+
+import {
   HlmAvatarImageDirective,
   HlmAvatarComponent,
   HlmAvatarFallbackDirective,
@@ -8,7 +17,7 @@ import {
 
 import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 import { provideIcons } from '@ng-icons/core';
-import { lucideShoppingCart } from '@ng-icons/lucide';
+import { lucideShoppingCart, lucideMenu } from '@ng-icons/lucide';
 
 import {
   BrnPopoverCloseDirective,
@@ -35,9 +44,14 @@ import {
     BrnPopoverTriggerDirective,
     HlmPopoverCloseDirective,
     HlmPopoverContentDirective,
+    BrnSheetContentDirective,
+    BrnSheetTriggerDirective,
+    HlmSheetComponent,
+    HlmSheetContentComponent,
   ],
-  providers: [provideIcons({ lucideShoppingCart })],
+  providers: [provideIcons({ lucideShoppingCart, lucideMenu })],
   templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   menuItems = [

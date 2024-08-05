@@ -1,5 +1,24 @@
+<hlm-sheet>
+  <button class="flex items-center lg:hidden" brnSheetTrigger side="left">
+    <hlm-icon name="lucideMenu" />
+  </button>
+  <hlm-sheet-content class="flex justify-center" *brnSheetContent="let ctx">
+    <nav class="mt-6">
+      <ul class="flex flex-col gap-6 text-lg text-foreground">
+        @for (item of menuItems; track item.id) {
+          <li
+            class="self-center decoration-primary decoration-4 hover:cursor-pointer hover:underline hover:underline-offset-2"
+          >
+            {{ item.title }}
+          </li>
+        }
+      </ul>
+    </nav>
+  </hlm-sheet-content>
+</hlm-sheet>
+
 <img src="logo.svg" alt="Sneakers Logo" />
-<nav class="ml-10 self-center">
+<nav class="ml-10 hidden self-center lg:flex">
   <ul class="flex h-full gap-14 text-sm text-muted-foreground">
     @for (item of menuItems; track item.id) {
       <li
@@ -12,7 +31,9 @@
 </nav>
 <div class="ml-auto flex items-center justify-center gap-8 p-2">
   <brn-popover>
-    <button brnPopoverTrigger><hlm-icon name="lucideShoppingCart" /></button>
+    <button class="flex items-center" brnPopoverTrigger>
+      <hlm-icon name="lucideShoppingCart" />
+    </button>
     <div hlmPopoverContent *brnPopoverContent="let ctx">
       <div class="border-b border-gray-200 pb-5">
         <h1 class="text-sm font-bold">Card</h1>
