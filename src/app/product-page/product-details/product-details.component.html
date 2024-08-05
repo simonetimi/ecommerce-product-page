@@ -23,18 +23,18 @@
   </p>
   <section class="mt-4 flex h-12 items-center gap-2">
     <div
-      class="flex h-full w-36 items-center justify-evenly rounded-lg bg-slate-300/50 dark:bg-slate-200"
+      class="flex h-full w-48 items-center justify-evenly rounded-lg bg-slate-300/50 dark:bg-slate-200 lg:w-32"
     >
       <button
         (click)="onChangeNumber('sub')"
-        class="h-full flex-1 text-2xl font-bold text-primary"
+        class="duration h-full flex-1 text-2xl font-bold text-primary active:scale-125"
       >
         -
       </button>
       <div class="w-4 text-center text-lg">{{ quantity() }}</div>
       <button
         (click)="onChangeNumber('add')"
-        class="h-full flex-1 text-2xl font-bold text-primary"
+        class="duration h-full flex-1 text-2xl font-bold text-primary active:scale-125"
       >
         +
       </button>
