@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, HostListener, input, signal } from '@angular/core';
 import { BrnDialogTriggerDirective } from '@spartan-ng/ui-dialog-brain';
 
 @Component({
@@ -10,6 +10,8 @@ import { BrnDialogTriggerDirective } from '@spartan-ng/ui-dialog-brain';
 })
 export class CarouselComponent {
   canTriggerDialog = input(false);
+  isMobile = signal(false);
+
   productImages = [
     {
       id: 0,
@@ -33,6 +35,16 @@ export class CarouselComponent {
     },
   ];
   currentPicture = signal(this.productImages[0]);
+
+  // this listens for width changes (client window). If small, the carousel won't open a dialog (useless on mobile)
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    if (window.innerWidth < 700) {
+      this.isMobile.set(true);
+    } else {
+      this.isMobile.set(false);
+    }
+  }
 
   onThumbnailClick(id: number) {
     this.currentPicture.set(
