@@ -21,25 +21,25 @@ export class ProductsService {
   }
 
   addProductToCart(product: Product, quantity: number) {
-    // if items exists in cart, then change the quantity of the right item and save it
-    if (this.itemsInCart().find((item) => item.id === product.id)) {
-      const newCart = this.itemsInCart().map((item) => {
-        if (item.id === product.id) {
-          item.quantity += quantity;
-        }
-        return item;
-      });
-      this.itemsInCart.set(newCart);
+    const cartItems = this.itemsInCart();
+
+    const itemIndex = cartItems.findIndex((item) => item.id === product.id);
+
+    if (itemIndex !== -1) {
+      // Update quantity of existing item
+      cartItems[itemIndex].quantity += quantity;
+      this.itemsInCart.set(cartItems);
+    } else {
+      // Add new item to cart
+      const newItem = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        thumbnail: product.thumbnail,
+        discount: product.discount,
+        quantity,
+      };
+      this.itemsInCart.update((prevState) => [...prevState, newItem]);
     }
-    // else, just add it
-    const newItem = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      thumbnail: product.thumbnail,
-      discount: product.discount,
-      quantity,
-    };
-    this.itemsInCart.update((prevState) => [...prevState, newItem]);
   }
 }

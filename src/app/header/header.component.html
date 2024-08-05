@@ -49,7 +49,7 @@
                 [src]="item.thumbnail"
                 alt="product thumbnail"
               />
-              <div class="flex w-52 flex-col gap-2 text-foreground/60">
+              <div class="flex w-52 flex-col gap-3 text-foreground/60">
                 <p>
                   {{
                     item.name.length < 30
@@ -60,7 +60,7 @@
                 <p>
                   {{ item.price * item.discount | currency }} x
                   {{ item.quantity }}
-                  <span class="font-bold text-foreground">{{
+                  <span class="ml-1 font-bold text-foreground">{{
                     item.price * item.discount * item.quantity | currency
                   }}</span>
                 </p>
