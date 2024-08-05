@@ -21,7 +21,7 @@ import type { ClassValue } from 'clsx';
 import { HlmSheetCloseDirective } from './hlm-sheet-close.directive';
 
 export const sheetVariants = cva(
-  'fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
+  'fixed z-50 gap-4 bg-background dark:bg-slate-800/80 p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
   {
     variants: {
       side: {
@@ -52,7 +52,11 @@ export const sheetVariants = cva(
     <ng-content />
     <button brnSheetClose hlm>
       <span class="sr-only">Close</span>
-      <hlm-icon class="flex h-4 w-4" size="100%" name="lucideX" />
+      <hlm-icon
+        class="flex h-4 w-4 dark:text-foreground"
+        size="100%"
+        name="lucideX"
+      />
     </button>
   `,
 })

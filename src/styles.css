@@ -43,7 +43,7 @@
   --card-foreground: 210 40% 98%;
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
-  --primary: 210 40% 98%;
+  --primary: 26 100% 55%;
   --primary-foreground: 222.2 47.4% 11.2%;
   --secondary: 217.2 32.6% 17.5%;
   --secondary-foreground: 210 40% 98%;
@@ -52,4 +52,8 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
   --ring: 212.7 26.8% 83.9;
+}
+
+body {
+  @apply bg-gradient-to-b from-slate-100 to-slate-200 dark:bg-gradient-to-t dark:from-slate-800 dark:to-slate-600
 }

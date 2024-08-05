@@ -1,14 +1,20 @@
 <article class="flex w-full flex-col gap-2 lg:w-3/4">
-  <h3 class="text-sm font-bold uppercase tracking-widest text-slate-500">
+  <h3
+    class="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-300"
+  >
     {{ currentProduct().company }}
   </h3>
-  <h1 class="text-4xl font-bold">{{ currentProduct().name }}</h1>
-  <p class="mt-6 text-slate-500">
+  <h1 class="text-4xl font-bold dark:text-foreground">
+    {{ currentProduct().name }}
+  </h1>
+  <p class="mt-6 text-slate-500 dark:text-slate-400">
     {{ currentProduct().description }}
   </p>
   <div class="mt-4 flex items-center gap-4">
-    <h2 class="text-3xl font-bold">{{ currentProduct().price | currency }}</h2>
-    <div hlmBadge class="h-2/3 rounded-sm bg-black">
+    <h2 class="text-3xl font-bold dark:text-foreground">
+      {{ currentProduct().price | currency }}
+    </h2>
+    <div hlmBadge class="h-2/3 rounded-sm bg-black dark:bg-slate-50">
       {{ currentProduct().discount * 100 }}%
     </div>
   </div>
@@ -17,7 +23,7 @@
   </p>
   <section class="mt-4 flex h-12 items-center gap-2">
     <div
-      class="flex h-full w-36 items-center justify-evenly rounded-lg bg-slate-300/50"
+      class="flex h-full w-36 items-center justify-evenly rounded-lg bg-slate-300/50 dark:bg-slate-200"
     >
       <button
         (click)="onChangeNumber('sub')"
@@ -33,7 +39,11 @@
         +
       </button>
     </div>
-    <button (click)="onAddToCart()" hlmBtn class="flex h-full w-56 gap-4">
+    <button
+      (click)="onAddToCart()"
+      hlmBtn
+      class="flex h-full w-56 gap-4 dark:text-foreground"
+    >
       <hlm-icon size="sm" name="lucideShoppingCart" /> Add to cart
     </button>
   </section>
