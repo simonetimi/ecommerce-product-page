@@ -1,25 +1,12 @@
 <img src="logo.svg" alt="Sneakers Logo" />
 <nav class="ml-10">
   <ul class="flex gap-14 text-sm text-muted-foreground">
-    <li
-      class="decoration-primary decoration-4 hover:cursor-pointer hover:underline hover:underline-offset-[9vh]"
-    >
-      Collections
-    </li>
-    <li
-      class="decoration-primary decoration-4 hover:cursor-pointer hover:underline hover:underline-offset-[9vh]"
-    >
-      Men
-    </li>
-    <li
-      class="decoration-primary decoration-4 hover:cursor-pointer hover:underline hover:underline-offset-[9vh]"
-    >
-      Women
-    </li>
-    <li
-      class="decoration-primary decoration-4 hover:cursor-pointer hover:underline hover:underline-offset-[9vh]"
-    >
-      About
-    </li>
+    @for (item of menuItems; track item.id) {
+      <li
+        class="decoration-primary decoration-4 hover:cursor-pointer hover:underline hover:underline-offset-[9vh]"
+      >
+        {{ item.title }}
+      </li>
+    }
   </ul>
 </nav>
