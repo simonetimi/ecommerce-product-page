@@ -1,20 +1,6 @@
-<img
-  [src]="currentPicture().imgUrl"
-  alt="Product image"
-  class="w-[400px] rounded-xl"
-/>
-<div class="flex gap-2">
-  @for (image of productImages; track image.id) {
-    <button>
-      <img
-        [src]="image.thumbnailUrl"
-        alt="Product thumbnail {{ image.id }}"
-        class="w-[90px] rounded-xl hover:opacity-60 {{
-          currentPicture().id === image.id &&
-            'outline outline-2 outline-orange-400'
-        }}"
-        (click)="onThumbnailClick(image.id)"
-      />
-    </button>
-  }
-</div>
+<hlm-dialog>
+  <app-carousel [canTriggerDialog]="true" />
+  <hlm-dialog-content *brnDialogContent="let ctx" class="m-4">
+    <app-carousel />
+  </hlm-dialog-content>
+</hlm-dialog>
