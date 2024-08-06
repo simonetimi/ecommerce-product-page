@@ -31,7 +31,10 @@
     }
   </ul>
 </nav>
-<div class="ml-auto flex items-center justify-center gap-8 p-2">
+<div class="ml-auto flex items-center justify-center gap-6 p-2">
+  <button (click)="toggleTheme()">
+    <hlm-icon class="mt-1 dark:text-foreground" [name]="getThemeIconName()" />
+  </button>
   <brn-popover>
     <button class="flex items-center" brnPopoverTrigger>
       <hlm-icon
