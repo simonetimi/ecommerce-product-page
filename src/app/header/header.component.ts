@@ -60,6 +60,10 @@ export class HeaderComponent {
   productsService = inject(ProductsService);
   itemsInCart = this.productsService.itemsInCart;
 
+  removeFromCart(id: string) {
+    this.productsService.removeProductFromCart(id);
+  }
+
   menuItems = [
     { id: 0, title: 'Collections' },
     { id: 1, title: 'Men' },

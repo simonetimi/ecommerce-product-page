@@ -70,7 +70,12 @@
                   }}</span>
                 </p>
               </div>
-              <hlm-icon size="sm" name="lucideTrash2" />
+              <hlm-icon
+                (click)="removeFromCart(item.id)"
+                size="sm"
+                name="lucideTrash2"
+                class="hover:cursor-pointer"
+              />
             </div>
           }
         } @else {

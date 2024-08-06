@@ -22,7 +22,6 @@ export class ProductsService {
 
   addProductToCart(product: Product, quantity: number) {
     const cartItems = this.itemsInCart();
-
     const itemIndex = cartItems.findIndex((item) => item.id === product.id);
 
     if (itemIndex !== -1) {
@@ -41,5 +40,11 @@ export class ProductsService {
       };
       this.itemsInCart.update((prevState) => [...prevState, newItem]);
     }
+  }
+
+  removeProductFromCart(productId: string) {
+    this.itemsInCart.set(
+      this.itemsInCart().filter((item) => item.id !== productId),
+    );
   }
 }
