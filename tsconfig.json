@@ -41,6 +41,9 @@
       ],
       "@spartan-ng/ui-button-helm": [
         "./src/ui/ui-button-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-sonner-helm": [
+        "./src/ui/ui-sonner-helm/src/index.ts"
       ]
     }
   },

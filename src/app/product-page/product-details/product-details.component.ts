@@ -10,6 +10,8 @@ import { lucideShoppingCart } from '@ng-icons/lucide';
 import { ProductsService } from '../../products.service';
 import { Product } from '../../placeholder-data';
 
+import { toast } from 'ngx-sonner';
+
 @Component({
   selector: 'app-product-details',
   standalone: true,
@@ -43,6 +45,7 @@ export class ProductDetailsComponent {
       this.currentProduct(),
       this.quantity(),
     );
+    toast(`${this.quantity() === 1 ? 'Item' : 'Items'} added to cart!`);
     this.quantity.set(1);
   }
 }
