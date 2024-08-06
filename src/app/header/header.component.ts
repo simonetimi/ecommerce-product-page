@@ -73,45 +73,54 @@ import { LogoComponent } from '../../ui/logo/logo.component';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
+  // cart management
   productsService = inject(ProductsService);
-  currentTheme = signal<'system' | 'light' | 'dark' | null>(null);
-  // compute icon name depending on current theme
-  getThemeIconName = computed(() => {
-    if (this.currentTheme() === 'light') {
-      return 'lucideSun';
-    } else if (this.currentTheme() === 'dark') {
-      return 'lucideMoon';
-    } else {
-      return 'lucideSunMoon';
-    }
-  });
   itemsInCart = this.productsService.itemsInCart;
-
   removeFromCart(id: string) {
     this.productsService.removeProductFromCart(id);
   }
 
+  // theme management
+  currentTheme = signal<'system' | 'light' | 'dark' | null>(null);
+
   ngOnInit() {
     // reads from local storage
     const current = localStorage.getItem('theme');
-    if (current === 'system') {
-      this.currentTheme.set('system');
-      if (window.matchMedia('(prefers-color-scheme: dark)')) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    } else if (current === 'light') {
-      this.currentTheme.set('light');
-      document.documentElement.classList.remove('dark');
-    } else if (current === 'dark') {
-      this.currentTheme.set('dark');
-      document.documentElement.classList.add('dark');
+    // type check
+    if (current !== 'light' && current !== 'dark' && current !== 'system') {
+      return;
     }
+    // sets the correct value on the signal and the correct class on the DOM
+    this.updateTheme(current);
+    // listen for system color scheme changes (add event listener 'change' on matchMedia)
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (e) => {
+        if (this.currentTheme() === 'system') {
+          this.updateTheme('system');
+        }
+      });
+  }
+
+  private updateTheme(theme: 'system' | 'light' | 'dark' | null) {
+    // update signal
+    if (theme === 'system' || !theme) {
+      this.currentTheme.set('system');
+    } else if (theme === 'dark') {
+      this.currentTheme.set('dark');
+    } else if (theme === 'light') {
+      this.currentTheme.set('light');
+    }
+    // Update the HTML document class
+    document.documentElement.classList.toggle(
+      'dark',
+      this.currentTheme() === 'dark' ||
+        (this.currentTheme() === 'system' &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches),
+    );
   }
 
   toggleTheme() {
-    // cycles through the 3 modes and sets local storage
     let newTheme: 'light' | 'dark' | 'system';
     if (this.currentTheme() === 'system' || !this.currentTheme()) {
       newTheme = 'light';
@@ -122,19 +131,20 @@ export class HeaderComponent {
     }
     this.currentTheme.set(newTheme);
     localStorage.setItem('theme', newTheme);
-
-    // Update the HTML document class
-    // if theme is dark or if theme is system and system is set to dark, set document to dark, else remove dark
-    if (
-      newTheme === 'dark' ||
-      (newTheme === 'system' &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    // calls updateTheme to update the dom when users changes the theme manually
+    this.updateTheme(newTheme);
   }
+
+  // compute icon name depending on current theme
+  getThemeIconName = computed(() => {
+    if (this.currentTheme() === 'light') {
+      return 'lucideSun';
+    } else if (this.currentTheme() === 'dark') {
+      return 'lucideMoon';
+    } else {
+      return 'lucideSunMoon';
+    }
+  });
 
   menuItems = [
     { id: 0, title: 'Collections' },
